@@ -213,7 +213,6 @@ This project is an online shopping store demo built with [SpringBoot3](https://g
 
   <summary>⚠️ Note</summary>
 
-  > [!CAUTION]
   > I am currently learning full-stack web development.  
   > So far, I have implemented **JWT-based user authentication**, **along with basic product query** and **account balance recharge** API functionalities.  
   > The **frontend** and **other features** are still under development.
