@@ -22,11 +22,11 @@ public interface OrderService {
      *
      * @param createRequest 包含商品、数量及收货信息的订单创建请求
      * @return 包含订单ID、订单号和支付状态的响应对象
-     * @throws online.store.exception.UserNotFoundException      当前登录用户不存在
-     * @throws online.store.exception.ProductNotFoundException     商品不存在
-     * @throws online.store.exception.ProductNotForSaleException   商品未处于出售状态
-     * @throws online.store.exception.InsufficientStockException   商品库存不足
-     * @throws online.store.exception.InsufficientBalanceException 用户余额不足
+     * @throws online.store.common.exception.UserNotFoundException      当前登录用户不存在
+     * @throws online.store.common.exception.ProductNotFoundException     商品不存在
+     * @throws online.store.common.exception.ProductNotForSaleException   商品未处于出售状态
+     * @throws online.store.common.exception.InsufficientStockException   商品库存不足
+     * @throws online.store.common.exception.InsufficientBalanceException 用户余额不足
      * @throws RuntimeException                                   发生并发更新或其他未知异常
      */
     OrderResponse createOrderAndPay(OrderCreateRequest createRequest);

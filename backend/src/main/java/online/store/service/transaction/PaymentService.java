@@ -16,7 +16,7 @@ public interface PaymentService {
      *
      * @param rechargeRequest 包含充值金额的请求对象
      * @return 包含充值详情和最新余额的响应对象
-     * @throws online.store.exception.UsernameNotFoundException 如果当前登录用户不存在抛出异常
+     * @throws online.store.common.exception.UserNameNotFoundException 如果当前登录用户不存在抛出异常
      * @throws IllegalArgumentException 充值金额无效 (如非正数)
      */
     RechargeResponse rechargeAccount(RechargeRequest rechargeRequest);

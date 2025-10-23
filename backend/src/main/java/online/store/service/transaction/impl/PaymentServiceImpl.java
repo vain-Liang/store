@@ -2,6 +2,7 @@ package online.store.service.transaction.impl;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import online.store.common.exception.*;
 import online.store.common.utils.SnowflakeIdGenerator;
 import online.store.dto.transaction.RechargeRequest;
@@ -23,6 +24,7 @@ import java.text.NumberFormat;
 import java.time.LocalDateTime;
 
 //TODO: 日志记录
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class PaymentServiceImpl implements PaymentService {
@@ -45,10 +47,10 @@ public class PaymentServiceImpl implements PaymentService {
 
         userMapper.updateById(user);
 
-        // TODO: 日志记录
         long transactionId = snowflakeIdGenerator.nextId();
-        // 暂且使用 JDK21 预览功能字符串模板打印到控制台进行模拟日志记录
-        System.out.println(STR."充值成功! 流水号 \{transactionId}, 用户 '\{user.getUsername()}' 充值成功。金额: \{amount}, 最新余额: \{user.getBalance()}");
+
+        //TODO: 日志记录
+        log.info("充值成功! 流水号 {}, 用户 '{}' 充值成功。金额: {}, 最新余额: {}", transactionId, user.getUsername(), amount, user.getBalance());
 
         //TODO: 充值失败设置状态和备注及输出信息
         //TODO: 充值状态为处理中的逻辑判定和处理

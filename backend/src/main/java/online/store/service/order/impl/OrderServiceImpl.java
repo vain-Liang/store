@@ -1,6 +1,7 @@
 package online.store.service.order.impl;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import online.store.common.exception.*;
 import online.store.common.utils.SnowflakeIdGenerator;
 import online.store.dto.order.OrderCreateRequest;
@@ -24,6 +25,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
@@ -75,7 +77,9 @@ public class OrderServiceImpl implements OrderService {
         OrderItem newOrderItem = buildOrderItem(newOrder.getId(), product, orderCreateRequest.getQuantity(), totalCost);
         orderItemMapper.insert(newOrderItem);
 
-        System.out.println(STR."订单创建成功! OrderNo: \{newOrder.getOrderNo()}, User: '\{user.getUsername()}', Product: '\{product.getName()}' x\{orderCreateRequest.getQuantity()}, Cost: \{totalCost}");
+        // TODO: 日志记录
+        log.info("订单创建成功! OrderNo: {}, User: '{}', Product: '{}' x{}, Cost: {}",
+                newOrder.getOrderNo(), user.getUsername(), product.getName(), orderCreateRequest.getQuantity(), totalCost);
 
         // 6. 构建并返回响应
         return OrderResponse.builder()
